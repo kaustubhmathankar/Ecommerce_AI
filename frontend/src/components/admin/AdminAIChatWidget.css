@@ -1,0 +1,993 @@
+.shopsphere-ai-widget {
+    --ai-red: #ce0925;
+    --ai-red-dark: #ad071d;
+    --ai-pink: #ed9ba9;
+    --ai-ink: #18211e;
+    --ai-muted: #6f7b75;
+    --ai-line: #e7ece8;
+    font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+.shopsphere-ai-launcher-wrap {
+    position: fixed;
+    z-index: 90;
+    right: 22px;
+    bottom: 22px;
+    display: flex;
+    align-items: center;
+    gap: 13px;
+}
+
+.shopsphere-ai-launcher-label {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    min-width: 166px;
+    padding: 11px 16px 12px;
+    border: 0;
+    border-radius: 12px 12px 4px 12px;
+    background: var(--ai-red);
+    color: white;
+    text-align: left;
+    box-shadow: 0 8px 22px rgba(160, 0, 22, .2);
+    cursor: pointer;
+    transition: transform .18s ease, background .18s ease;
+}
+
+.shopsphere-ai-launcher-label:hover {
+    background: var(--ai-red-dark);
+    transform: translateY(-2px);
+}
+
+.shopsphere-ai-launcher-label span {
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 1.3;
+}
+
+.shopsphere-ai-launcher-label small {
+    color: rgba(255, 255, 255, .78);
+    font-size: 10px;
+    line-height: 1.3;
+}
+
+.shopsphere-ai-launcher {
+    position: relative;
+    display: grid;
+    width: 66px;
+    height: 66px;
+    flex: 0 0 66px;
+    place-items: center;
+    border: 0;
+    border-radius: 50%;
+    background: var(--ai-pink);
+    box-shadow: 0 0 0 1px rgba(206, 9, 37, .12), 0 4px 14px rgba(120, 0, 16, .1);
+    cursor: pointer;
+    transition: transform .18s ease;
+}
+
+.shopsphere-ai-launcher:hover {
+    transform: scale(1.04);
+}
+
+.shopsphere-ai-launcher-inner {
+    display: grid;
+    width: 42px;
+    height: 42px;
+    place-items: center;
+    border: 1.6px solid white;
+    border-radius: 50%;
+    background: var(--ai-red);
+    color: white;
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,.24);
+}
+
+.shopsphere-ai-launcher-pulse {
+    position: absolute;
+    inset: 8px;
+    border: 1px solid rgba(255,255,255,.42);
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.shopsphere-ai-panel {
+    position: fixed;
+    z-index: 91;
+    right: 22px;
+    bottom: 102px;
+    display: flex;
+    width: min(430px, calc(100vw - 28px));
+    max-height: min(740px, calc(100dvh - 124px));
+    min-height: 420px;
+    flex-direction: column;
+    overflow: hidden;
+    border: 1px solid rgba(226, 232, 228, .95);
+    border-radius: 22px;
+    background: #fff;
+    color: var(--ai-ink);
+    box-shadow: 0 24px 75px rgba(22, 36, 28, .24), 0 4px 14px rgba(22, 36, 28, .08);
+    animation: shopsphere-ai-rise .2s ease-out;
+}
+
+@keyframes shopsphere-ai-rise {
+    from {
+        opacity: 0;
+        transform: translateY(9px) scale(.985);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.shopsphere-ai-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-height: 70px;
+    padding: 13px 15px;
+    background: linear-gradient(110deg, #c90722, #e21d3a);
+    color: white;
+}
+
+.shopsphere-ai-avatar {
+    display: grid;
+    width: 42px;
+    height: 42px;
+    flex: 0 0 42px;
+    place-items: center;
+    border: 1px solid rgba(255,255,255,.5);
+    border-radius: 15px;
+    background: rgba(255,255,255,.14);
+}
+
+.shopsphere-ai-header-copy {
+    min-width: 0;
+    flex: 1;
+}
+
+.shopsphere-ai-title-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.shopsphere-ai-title-row h2 {
+    margin: 0;
+    color: white;
+    font-size: 15px;
+    font-weight: 750;
+    letter-spacing: -.02em;
+}
+
+.shopsphere-ai-header-copy p {
+    margin: 3px 0 0;
+    color: rgba(255,255,255,.8);
+    font-size: 11px;
+}
+
+.shopsphere-ai-live-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #a8f2bf;
+    box-shadow: 0 0 0 3px rgba(168,242,191,.17);
+}
+
+.shopsphere-ai-header-action {
+    display: grid;
+    width: 32px;
+    height: 32px;
+    flex: 0 0 32px;
+    place-items: center;
+    border: 0;
+    border-radius: 10px;
+    background: rgba(255,255,255,.12);
+    color: white;
+    cursor: pointer;
+}
+
+.shopsphere-ai-header-action:hover {
+    background: rgba(255,255,255,.22);
+}
+
+.shopsphere-ai-trust-row {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 16px;
+    border-bottom: 1px solid #f0f3f0;
+    color: #6e7e74;
+    font-size: 10px;
+    background: #fcfdfc;
+}
+
+.shopsphere-ai-trust-row svg {
+    color: #23845a;
+}
+
+.shopsphere-ai-notice {
+    display: flex;
+    gap: 8px;
+    margin: 10px 12px 0;
+    padding: 9px 10px;
+    border: 1px solid #d7eee1;
+    border-radius: 10px;
+    background: #f0fbf4;
+    color: #276242;
+    font-size: 10px;
+    line-height: 1.45;
+}
+
+.shopsphere-ai-notice svg {
+    flex: 0 0 auto;
+    margin-top: 1px;
+}
+
+.shopsphere-ai-notice--soft {
+    border-color: #f2e4c7;
+    background: #fffbef;
+    color: #76561a;
+}
+
+.shopsphere-ai-messages {
+    display: flex;
+    min-height: 0;
+    flex: 1;
+    flex-direction: column;
+    gap: 13px;
+    overflow: auto;
+    padding: 16px 12px 12px;
+    background: linear-gradient(180deg, #fff 0%, #fbfcfb 100%);
+    scrollbar-width: thin;
+    scrollbar-color: #d8dfda transparent;
+}
+
+.shopsphere-ai-message-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 7px;
+}
+
+.shopsphere-ai-message-row--user {
+    justify-content: flex-end;
+}
+
+.shopsphere-ai-message-avatar {
+    display: grid;
+    width: 26px;
+    height: 26px;
+    flex: 0 0 26px;
+    place-items: center;
+    border: 1px solid #f0d6da;
+    border-radius: 9px;
+    background: #fff0f2;
+    color: var(--ai-red);
+}
+
+.shopsphere-ai-message-avatar.is-error {
+    color: #b42318;
+    background: #fff0ed;
+}
+
+.shopsphere-ai-message {
+    max-width: calc(100% - 33px);
+    min-width: 0;
+    padding: 11px 12px;
+    border: 1px solid #ebefec;
+    border-radius: 4px 14px 14px 14px;
+    background: white;
+    color: #293630;
+    box-shadow: 0 2px 5px rgba(26,46,32,.025);
+}
+
+.shopsphere-ai-message--user {
+    max-width: 86%;
+    border-color: var(--ai-red);
+    border-radius: 14px 4px 14px 14px;
+    background: var(--ai-red);
+    color: white;
+}
+
+.shopsphere-ai-message--error {
+    border-color: #f0c6c0;
+    background: #fff7f5;
+    color: #8f261c;
+}
+
+.shopsphere-ai-message-text {
+    margin: 0;
+    font-size: 12px;
+    line-height: 1.62;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+}
+
+.shopsphere-ai-message--user .shopsphere-ai-message-text {
+    color: white;
+}
+
+.shopsphere-ai-grounding {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    margin: 10px 0 0;
+    color: #4f8464;
+    font-size: 10px;
+}
+
+.shopsphere-ai-suggestions {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    margin: -2px 0 4px 33px;
+}
+
+.shopsphere-ai-suggestions > p {
+    margin: 0 0 1px;
+    color: #8a958e;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+}
+
+.shopsphere-ai-suggestions button {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    align-self: flex-start;
+    max-width: 100%;
+    padding: 8px 10px;
+    border: 1px solid #e6ebe7;
+    border-radius: 10px;
+    background: white;
+    color: #45564c;
+    font-size: 11px;
+    cursor: pointer;
+    text-align: left;
+}
+
+.shopsphere-ai-suggestions button:hover {
+    border-color: #ef9aa7;
+    background: #fff7f8;
+    color: var(--ai-red);
+}
+
+.shopsphere-ai-suggestions button svg:first-child {
+    color: var(--ai-red);
+    flex: 0 0 auto;
+}
+
+.shopsphere-ai-suggestions button svg:last-child {
+    margin-left: auto;
+    color: #8d9b92;
+    flex: 0 0 auto;
+}
+
+.shopsphere-ai-results {
+    display: grid;
+    gap: 10px;
+    margin-top: 11px;
+}
+
+.shopsphere-ai-result-card {
+    min-width: 0;
+    overflow: hidden;
+    border: 1px solid #e8ede9;
+    border-radius: 12px;
+    background: #fff;
+}
+
+.shopsphere-ai-result-heading {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 10px 8px;
+}
+
+.shopsphere-ai-result-icon {
+    display: grid;
+    width: 28px;
+    height: 28px;
+    flex: 0 0 28px;
+    place-items: center;
+    border-radius: 9px;
+    background: #fff0f2;
+    color: var(--ai-red);
+}
+
+.shopsphere-ai-result-heading h4 {
+    margin: 0;
+    color: #24322a;
+    font-size: 11px;
+    font-weight: 750;
+}
+
+.shopsphere-ai-result-heading p {
+    margin: 3px 0 0;
+    color: #869189;
+    font-size: 9px;
+}
+
+.shopsphere-ai-metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 6px;
+    padding: 0 9px 9px;
+}
+
+.shopsphere-ai-metrics-grid--single {
+    grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+}
+
+.shopsphere-ai-metric {
+    position: relative;
+    display: flex;
+    min-width: 0;
+    flex-direction: column;
+    gap: 4px;
+    padding: 9px;
+    border: 1px solid #edf0ed;
+    border-radius: 10px;
+    background: #fbfcfb;
+}
+
+.shopsphere-ai-metric--accent {
+    border-color: #f3cbd1;
+    background: #fff7f8;
+}
+
+.shopsphere-ai-metric-icon {
+    display: flex;
+    color: #7b8d80;
+}
+
+.shopsphere-ai-metric--accent .shopsphere-ai-metric-icon {
+    color: var(--ai-red);
+}
+
+.shopsphere-ai-metric-label {
+    color: #78857d;
+    font-size: 9px;
+    line-height: 1.35;
+}
+
+.shopsphere-ai-metric strong {
+    color: #1f3228;
+    font-size: 14px;
+    font-weight: 750;
+    overflow-wrap: anywhere;
+}
+
+.shopsphere-ai-table-wrap {
+    max-width: 100%;
+    overflow-x: auto;
+    border-top: 1px solid #eef1ee;
+}
+
+.shopsphere-ai-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 10px;
+    text-align: left;
+}
+
+.shopsphere-ai-table th {
+    padding: 8px 9px;
+    background: #f9faf9;
+    color: #7a877e;
+    font-size: 9px;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.shopsphere-ai-table td {
+    max-width: 145px;
+    padding: 8px 9px;
+    border-top: 1px solid #f0f2f0;
+    color: #445349;
+    overflow-wrap: anywhere;
+}
+
+.shopsphere-ai-table td:not(:first-child) {
+    white-space: nowrap;
+}
+
+.shopsphere-ai-empty-table {
+    margin: 0;
+    padding: 10px;
+    color: #88928c;
+    font-size: 10px;
+}
+
+.shopsphere-ai-table-heading {
+    margin: 8px 10px 6px;
+    color: #78857d;
+    font-size: 9px;
+    font-weight: 750;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+}
+
+.shopsphere-ai-data-note {
+    margin: 0;
+    padding: 8px 10px;
+    border-top: 1px solid #f1f3f1;
+    color: #87918a;
+    font-size: 9px;
+    line-height: 1.45;
+}
+
+.shopsphere-ai-trend {
+    padding: 0 10px 10px;
+}
+
+.shopsphere-ai-trend-summary {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 8px;
+    margin-bottom: 9px;
+}
+
+.shopsphere-ai-trend-summary strong {
+    color: #1f3228;
+    font-size: 17px;
+}
+
+.shopsphere-ai-trend-summary span {
+    color: #7e8a82;
+    font-size: 9px;
+}
+
+.shopsphere-ai-trend-row {
+    display: grid;
+    grid-template-columns: 65px minmax(35px, 1fr) 84px;
+    align-items: center;
+    gap: 7px;
+    margin: 7px 0;
+}
+
+.shopsphere-ai-trend-row > span {
+    color: #718076;
+    font-size: 9px;
+}
+
+.shopsphere-ai-trend-row > strong {
+    color: #46564b;
+    font-size: 9px;
+    text-align: right;
+}
+
+.shopsphere-ai-trend-track {
+    height: 7px;
+    overflow: hidden;
+    border-radius: 99px;
+    background: #f4e5e8;
+}
+
+.shopsphere-ai-trend-bar {
+    height: 100%;
+    min-width: 2px;
+    border-radius: inherit;
+    background: linear-gradient(90deg, #ce0925, #ef8596);
+}
+
+.shopsphere-ai-thinking {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    color: #7a887f;
+    font-size: 11px;
+}
+
+.shopsphere-ai-thinking > div {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    padding: 10px 12px;
+    border: 1px solid #e9eeea;
+    border-radius: 4px 12px 12px 12px;
+    background: white;
+}
+
+.shopsphere-ai-spinner {
+    animation: shopsphere-ai-spin 1s linear infinite;
+}
+
+@keyframes shopsphere-ai-spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.shopsphere-ai-composer {
+    display: flex;
+    align-items: flex-end;
+    gap: 8px;
+    padding: 10px 12px 8px;
+    border-top: 1px solid #e9eeea;
+    background: white;
+}
+
+.shopsphere-ai-composer textarea {
+    display: block;
+    min-height: 40px;
+    max-height: 100px;
+    flex: 1;
+    resize: none;
+    padding: 11px 12px;
+    border: 1px solid #e3e9e4;
+    border-radius: 13px;
+    outline: none;
+    background: #fbfcfb;
+    color: #24332a;
+    font-size: 12px;
+    line-height: 1.4;
+}
+
+.shopsphere-ai-composer textarea:focus {
+    border-color: #e48b9a;
+    box-shadow: 0 0 0 3px rgba(206,9,37,.07);
+}
+
+.shopsphere-ai-composer textarea::placeholder {
+    color: #95a097;
+}
+
+.shopsphere-ai-composer button {
+    display: grid;
+    width: 40px;
+    height: 40px;
+    flex: 0 0 40px;
+    place-items: center;
+    border: 0;
+    border-radius: 12px;
+    background: var(--ai-red);
+    color: white;
+    cursor: pointer;
+}
+
+.shopsphere-ai-composer button:hover:not(:disabled) {
+    background: var(--ai-red-dark);
+}
+
+.shopsphere-ai-composer button:disabled {
+    background: #edc5cb;
+    cursor: not-allowed;
+}
+
+.shopsphere-ai-footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    padding: 0 10px 9px;
+    background: white;
+    color: #9aa39d;
+    font-size: 9px;
+}
+
+html[data-theme="dark"] .shopsphere-ai-panel {
+    border-color: #35413a;
+    background: #1a211e;
+    color: #edf2ef;
+}
+
+html[data-theme="dark"] .shopsphere-ai-trust-row,
+html[data-theme="dark"] .shopsphere-ai-messages,
+html[data-theme="dark"] .shopsphere-ai-composer,
+html[data-theme="dark"] .shopsphere-ai-footer {
+    background: #1a211e;
+    border-color: #303a35;
+}
+
+html[data-theme="dark"] .shopsphere-ai-message:not(.shopsphere-ai-message--user),
+html[data-theme="dark"] .shopsphere-ai-result-card,
+html[data-theme="dark"] .shopsphere-ai-suggestions button,
+html[data-theme="dark"] .shopsphere-ai-thinking > div {
+    background: #202924;
+    border-color: #344239;
+    color: #d6dfda;
+}
+
+html[data-theme="dark"] .shopsphere-ai-message-text,
+html[data-theme="dark"] .shopsphere-ai-result-heading h4,
+html[data-theme="dark"] .shopsphere-ai-metric strong,
+html[data-theme="dark"] .shopsphere-ai-trend-summary strong,
+html[data-theme="dark"] .shopsphere-ai-table td {
+    color: #e2eae5;
+}
+
+html[data-theme="dark"] .shopsphere-ai-result-heading p,
+html[data-theme="dark"] .shopsphere-ai-metric-label,
+html[data-theme="dark"] .shopsphere-ai-trend-row > span,
+html[data-theme="dark"] .shopsphere-ai-trend-row > strong {
+    color: #aab7b0;
+}
+
+html[data-theme="dark"] .shopsphere-ai-metric,
+html[data-theme="dark"] .shopsphere-ai-table th {
+    background: #252e28;
+    border-color: #35413a;
+}
+
+html[data-theme="dark"] .shopsphere-ai-metric--accent {
+    background: #332327;
+    border-color: #63313a;
+}
+
+html[data-theme="dark"] .shopsphere-ai-composer textarea {
+    background: #202924;
+    border-color: #35413a;
+    color: #edf2ef;
+}
+
+html[data-theme="dark"] .shopsphere-ai-table td,
+html[data-theme="dark"] .shopsphere-ai-table-wrap {
+    border-color: #303a35;
+}
+
+html[data-theme="dark"] .shopsphere-ai-data-note {
+    border-color: #303a35;
+    color: #aab7b0;
+}
+
+@media (max-width: 480px) {
+    .shopsphere-ai-launcher-wrap {
+        right: 14px;
+        bottom: 14px;
+        gap: 9px;
+    }
+
+    .shopsphere-ai-launcher {
+        width: 58px;
+        height: 58px;
+        flex-basis: 58px;
+    }
+
+    .shopsphere-ai-launcher-inner {
+        width: 38px;
+        height: 38px;
+    }
+
+    .shopsphere-ai-launcher-label {
+        min-width: 142px;
+        padding: 9px 11px;
+    }
+
+    .shopsphere-ai-launcher-label span {
+        font-size: 11px;
+    }
+
+    .shopsphere-ai-launcher-label small {
+        font-size: 9px;
+    }
+
+    .shopsphere-ai-panel {
+        right: 10px;
+        bottom: 82px;
+        width: calc(100vw - 20px);
+        max-height: calc(100dvh - 96px);
+        min-height: min(410px, calc(100dvh - 96px));
+        border-radius: 18px;
+    }
+
+    .shopsphere-ai-header {
+        min-height: 64px;
+        padding: 10px;
+    }
+
+    .shopsphere-ai-message {
+        max-width: calc(100% - 28px);
+        padding: 9px 10px;
+    }
+
+    .shopsphere-ai-metrics-grid {
+        gap: 5px;
+        padding-right: 7px;
+        padding-left: 7px;
+    }
+
+    .shopsphere-ai-metric {
+        padding: 7px;
+    }
+
+    .shopsphere-ai-metric strong {
+        font-size: 12px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .shopsphere-ai-panel {
+        animation: none;
+    }
+
+    .shopsphere-ai-spinner {
+        animation-duration: 2s;
+    }
+}
+
+/* Structured Markdown rendering for assistant responses */
+.shopsphere-ai-markdown-host {
+    white-space: normal;
+    min-width: 0;
+}
+
+.shopsphere-ai-markdown {
+    display: flex;
+    min-width: 0;
+    flex-direction: column;
+    gap: 8px;
+    font-size: 12px;
+    line-height: 1.58;
+    overflow-wrap: anywhere;
+    white-space: normal;
+}
+
+.shopsphere-ai-markdown-paragraph {
+    margin: 0;
+    white-space: normal;
+}
+
+.shopsphere-ai-markdown-section {
+    margin: 4px 0 0;
+    color: #26382e;
+    font-size: 12px;
+    line-height: 1.4;
+    font-weight: 780;
+}
+
+.shopsphere-ai-markdown-heading {
+    margin: 4px 0 0;
+    color: #26382e;
+    font-weight: 780;
+    line-height: 1.35;
+}
+
+.shopsphere-ai-markdown h1 {
+    font-size: 16px;
+}
+
+.shopsphere-ai-markdown h2 {
+    font-size: 14px;
+}
+
+.shopsphere-ai-markdown h3,
+.shopsphere-ai-markdown h4 {
+    font-size: 12px;
+}
+
+.shopsphere-ai-markdown-list {
+    display: grid;
+    gap: 5px;
+    margin: 0;
+    padding-left: 20px;
+}
+
+.shopsphere-ai-markdown-list li {
+    padding-left: 1px;
+}
+
+.shopsphere-ai-markdown-list li::marker {
+    color: #ce0925;
+}
+
+.shopsphere-ai-markdown a {
+    color: #b70722;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+}
+
+.shopsphere-ai-markdown code {
+    padding: 1px 4px;
+    border: 1px solid #e7ece8;
+    border-radius: 5px;
+    background: #f6f8f6;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: .92em;
+}
+
+.shopsphere-ai-markdown-code {
+    max-width: 100%;
+    margin: 0;
+    overflow-x: auto;
+    padding: 10px;
+    border: 1px solid #e7ece8;
+    border-radius: 9px;
+    background: #f7f9f7;
+    font-size: 11px;
+    white-space: pre;
+}
+
+.shopsphere-ai-markdown-rule {
+    width: 100%;
+    margin: 2px 0;
+    border: 0;
+    border-top: 1px solid #e6ebe7;
+}
+
+.shopsphere-ai-markdown-table-wrap {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: auto;
+    border: 1px solid #e5ebe6;
+    border-radius: 9px;
+    background: #fff;
+    scrollbar-width: thin;
+}
+
+.shopsphere-ai-markdown-table {
+    width: 100%;
+    min-width: 215px;
+    border-collapse: collapse;
+    font-size: 11px;
+    text-align: left;
+}
+
+.shopsphere-ai-markdown-table th {
+    padding: 8px 9px;
+    background: #f6f8f6;
+    color: #66756b;
+    font-size: 10px;
+    font-weight: 750;
+    white-space: nowrap;
+}
+
+.shopsphere-ai-markdown-table td {
+    padding: 8px 9px;
+    border-top: 1px solid #edf1ed;
+    color: #34453a;
+    line-height: 1.45;
+    overflow-wrap: anywhere;
+}
+
+.shopsphere-ai-markdown-table tbody tr:nth-child(even) {
+    background: #fbfcfb;
+}
+
+.shopsphere-ai-message--user .shopsphere-ai-message-text {
+    white-space: pre-wrap;
+}
+
+/* Dark theme for the Markdown renderer */
+html[data-theme="dark"] .shopsphere-ai-markdown-section,
+html[data-theme="dark"] .shopsphere-ai-markdown-heading {
+    color: #e2eae5;
+}
+
+html[data-theme="dark"] .shopsphere-ai-markdown-table-wrap {
+    border-color: #35413a;
+    background: #202924;
+}
+
+html[data-theme="dark"] .shopsphere-ai-markdown-table th {
+    background: #252e28;
+    color: #bdc9c1;
+}
+
+html[data-theme="dark"] .shopsphere-ai-markdown-table td {
+    border-color: #35413a;
+    color: #e2eae5;
+}
+
+html[data-theme="dark"] .shopsphere-ai-markdown-table tbody tr:nth-child(even) {
+    background: #222b25;
+}
+
+html[data-theme="dark"] .shopsphere-ai-markdown code,
+html[data-theme="dark"] .shopsphere-ai-markdown-code {
+    border-color: #35413a;
+    background: #252e28;
+    color: #e2eae5;
+}
+
+html[data-theme="dark"] .shopsphere-ai-markdown a {
+    color: #ff9baa;
+}
+
+html[data-theme="dark"] .shopsphere-ai-markdown-rule {
+    border-color: #35413a;
+}
